@@ -1,0 +1,161 @@
+html, body {
+	border: 1px solid;
+	height: 100%;
+}
+.top-container {
+	display: flex;
+	flex-direction: column;
+
+	margin: 0 auto 0 auto;
+	width: 100%;
+}
+form.playerOptions {
+	border: 5px solid seagreen;
+	display: flex;
+	flex-flow: row wrap;
+	background-color: gold;
+	justify-content: space-between;
+
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.options {
+	margin-left: 10px;
+}
+form label {
+	font-size: 0.9rem;
+}
+form button {
+	margin-top: 1rem;
+}
+
+.board {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	margin: auto;
+	width: 90%;
+	max-width: 400px;
+	height: 400px;
+
+}
+button {
+	background-color: white;
+}
+
+button p {
+	font-size: 2.35rem;
+}
+
+.start, .reset, .view-minimax {
+	font-size: 0.75rem;
+}
+
+.board button:nth-child(n):nth-child(-n+3) {
+	border-top: none;
+}
+
+.board button:nth-child(n+7):nth-child(-n+9) {
+	border-bottom: none;
+}
+
+.board button:nth-child(3n + 1) {
+	border-left: none;
+} 
+
+.board button:nth-child(3n) {
+	border-right: none;
+} 
+
+.board button:hover {
+	background-color: #ffee10;
+	box-shadow: 0 0 5px #ffee10;
+}
+
+button:hover p {
+}
+
+/*.board button::before {
+	transition: 0.5s;
+	transform: scale(.9);
+}*/
+
+h1 {
+	text-align: center;
+	margin: auto;
+
+}
+.under-board {
+/*	border: 2px solid red;*/
+}
+.game-winner {
+	opacity: 0;
+}
+
+.algo-option-container {
+	margin: auto;
+}
+
+.algo-text {
+	opacity: 0;
+	width: 90%;
+	margin: auto;
+}
+
+#treeContainer {
+/*	display: flex;*/
+/*	justify-content: center;*/
+}
+
+/********** Small devices **********/
+@media (min-width: 460px) {
+	form.playerOptions {
+	  	justify-content: space-around;
+	}
+}
+
+@media (min-width: 576px) {
+	form.playerOptions {
+	
+	}
+}
+
+
+/********** Medium devices **********/
+@media (min-width: 768px) {
+	.top-container {
+  		max-width: 80%;
+  	}
+	.under-board {
+	  	grid-column-start: 2;
+	}
+}
+
+/********** Large devices **********/
+@media (min-width: 992px) {
+	.top-container {
+  		max-width: 1000px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+  	}
+  	form.playerOptions {
+	  	display: flex;
+	  	flex-flow: column wrap;
+
+	  	width: auto;
+	  	align-self: start;
+	}
+  	form label {
+  		font-size: 1.15rem;
+  	}
+  	.board {
+  		width: 400px;
+  	}
+  	.algo-option-container {
+  		grid-row-start: 2;
+  	}
+}
