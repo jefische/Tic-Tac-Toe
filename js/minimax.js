@@ -24,8 +24,8 @@ function minimax(board, depth, isMaximizing) {
 	if (availableMoves <= 4) {
 		console.log("We are at depth: " + depth);
 		// depthCount[depth]++;
-		let tempBoard = board;
-		depthCount[depth].push(board);
+		let tempBoard = board.slice();
+		depthCount[depth].push(tempBoard);
 		// depthCount.addBoard(tempBoard);
 		console.log(board);
 	}
