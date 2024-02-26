@@ -76,22 +76,11 @@ button p {
 	box-shadow: 0 0 5px #ffee10;
 }
 
-button:hover p {
-}
-
-/*.board button::before {
-	transition: 0.5s;
-	transform: scale(.9);
-}*/
-
 h1 {
 	text-align: center;
 	margin: auto;
+}
 
-}
-.under-board {
-/*	border: 2px solid red;*/
-}
 .game-winner {
 	opacity: 0;
 }
@@ -106,24 +95,12 @@ h1 {
 	margin: auto;
 }
 
-#treeContainer {
-/*	display: flex;*/
-/*	justify-content: center;*/
-}
-
 /********** Small devices **********/
 @media (min-width: 460px) {
 	form.playerOptions {
 	  	justify-content: space-around;
 	}
 }
-
-@media (min-width: 576px) {
-	form.playerOptions {
-	
-	}
-}
-
 
 /********** Medium devices **********/
 @media (min-width: 768px) {
