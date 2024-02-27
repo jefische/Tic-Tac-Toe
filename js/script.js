@@ -7,16 +7,6 @@ var countMinimaxCalls = 0;
 let depthCount = [0,[],[],[],[]];
 let depthMap = [[],[],[],[]];
 
-// var depthCount = {
-// 	treeArray: [],
-// 	addBoard(b) {
-// 		this.treeArray.push(b)
-// 	},
-// 	clearBoard() {
-// 		this.treeArray.length = 0;
-// 	}
-// }
-
 var ai = "O";
 var human = "X";
 var currentPlayer = human;

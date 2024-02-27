@@ -26,8 +26,6 @@ function minimax(board, depth, isMaximizing) {
 		// depthCount[depth]++;
 		let tempBoard = board.slice();
 		depthCount[depth].push(tempBoard);
-		// depthCount.addBoard(tempBoard);
-		console.log(board);
 	}
 
 	{ let result = checkForWinner();
