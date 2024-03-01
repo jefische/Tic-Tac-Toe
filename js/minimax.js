@@ -2,6 +2,8 @@ function bestMove () {
 	// AI to make its turn
 	let bestScore = Infinity;
 	let move;
+	let tempBoard = board.slice();
+	depthCount[0].push(tempBoard);
 	
 	for (let i = 0; i < board.length ; i++) {
 		// Is the spot available?
@@ -23,9 +25,11 @@ function minimax(board, depth, isMaximizing) {
 
 	if (availableMoves <= 4) {
 		console.log("We are at depth: " + depth);
-		// depthCount[depth]++;
+		depthMapping.push(depth);
 		let tempBoard = board.slice();
 		depthCount[depth].push(tempBoard);
+
+		// need to check for number of game states
 	}
 
 	{ let result = checkForWinner();

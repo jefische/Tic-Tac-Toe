@@ -4,8 +4,8 @@ var board = [...Array(9)];
 var gameOver = false;
 var computerPlayer = "random";
 var countMinimaxCalls = 0;
-let depthCount = [0,[],[],[],[]];
-let depthMap = [[],[],[],[]];
+let depthCount = [[],[],[],[],[]];
+let depthMapping = [];
 
 var ai = "O";
 var human = "X";
@@ -88,9 +88,8 @@ function selectSquare(event) {
 			square.textContent = human;
 			board[squareNum] = 1;
 			availableMoves--;
-			depthCount = [0,[],[],[],[]];
-			depthMap = [[],[],[],[]];
-			// depthCount.clearBoard();
+			depthCount = [[],[],[],[],[]];
+			depthMapping = [];
 		}
 		else if (gameOver) {
 			return;
@@ -133,7 +132,6 @@ function computerPlayerTurn() {
 	}
 	
 	board[computerMove] = -1;
-	// console.log("Number of minimax function calls: " + countMinimaxCalls);
 	countMinimaxCalls = 0;
 
 	// mark square O
