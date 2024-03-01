@@ -15,7 +15,7 @@ function startSketch() {
 		let edge;
 		// let maxColumns = Math.max(...depthCount.map((x) => x.length));
 		let maxColumns = 6;
-		depthMapping = [1,2,3,2,3,1,2,2,3,1,2,2,3];
+		// depthMapping = [1,2,3,2,3,1,2,2,3,1,2,2,3];
 
 		sketch.setup = function() {
 			sketch.createCanvas(w, h);
@@ -77,36 +77,36 @@ function startSketch() {
 // width variable is only defined inside the function setup and draw scopes
 
 
-function mutateArray(enter, value) {
-	value++;
-	let initialBranches = enter.filter(function(x) {return x==value}).length;
-	let newArray = [];
-	let tempArray = [];
+function mutateArray(depthArray, depthValue) {
+	depthValue++;
+	let initialBranches = depthArray.filter(function(x) {return x==depthValue}).length;
+	let finalArray = [];
+	let nesting = [];
 	
 	if (initialBranches <= 1) {
-		return enter;
+		return depthArray;
 	}
 	else {
+		let tempArray = depthArray.slice();
 		for (let i = 0; i < initialBranches; i++) {
-			let start = enter.indexOf(value, 0);
-			let end = enter.indexOf(value,1);
+			let start = tempArray.indexOf(depthValue, 0);
+			let end = tempArray.indexOf(depthValue,1);
 			if (end > 0 & (start+1 != end)) {
-				tempArray = enter.slice(start+1, end);
-				enter.splice(start,end);
+				nesting = tempArray.slice(start+1, end);
+				tempArray.splice(start,end);
 			}
 			else if (end > 0 & (start+1 == end)) {
-				tempArray = enter.slice(start, end);
-				enter.splice(start,1);
+				tempArray.splice(start,1);
 				continue;
 			}
 			else {
-				tempArray = enter.slice(start+1);
+				nesting = tempArray.slice(start+1);
 			}
-			newArray[i] = mutateArray(tempArray,value);
-			replace(newArray,value);
+			finalArray[i] = mutateArray(nesting,depthValue);
+			replace(finalArray,depthValue);
 		}
 	}
-	return newArray;
+	return finalArray;
 }
 
 function replace(array, value) {
