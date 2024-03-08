@@ -10,7 +10,7 @@ function bestMove () {
 		if (board[i] == undefined) {
 			board[i] = -1;
 			countMinimaxCalls++;
-			let score = minimax(board, 1, true);
+			let score = minimax(board, 1, true, i);
 			board[i] = undefined;
 			if (score < bestScore) {
 				bestScore = score;
@@ -21,12 +21,18 @@ function bestMove () {
 	return Number(move);
 }
 
-function minimax(board, depth, isMaximizing) {
+function minimax(board, depth, isMaximizing, currentMove) {
 
 	if (availableMoves <= 4) {
 		console.log("We are at depth: " + depth);
 		depthMapping.push(depth);
 		let tempBoard = board.slice();
+		if (isMaximizing) {
+			tempBoard[currentMove] = -99;
+		}
+		else {
+			tempBoard[currentMove] = 99;
+		}
 		depthCount[depth].push(tempBoard);
 
 		// need to check for number of game states
@@ -45,7 +51,7 @@ function minimax(board, depth, isMaximizing) {
 			if (board[i] == undefined) {
 				board[i] = 1;
 				countMinimaxCalls++;
-				let score = minimax(board, depth + 1, false) - depth;
+				let score = minimax(board, depth + 1, false, i) - depth;
 				board[i] = undefined;
 				bestScore = Math.max(score, bestScore);
 			}
@@ -59,7 +65,7 @@ function minimax(board, depth, isMaximizing) {
 			if (board[i] == undefined) {
 				board[i] = -1;
 				countMinimaxCalls++;
-				let score = minimax(board, depth + 1, true) + depth;
+				let score = minimax(board, depth + 1, true, i) + depth;
 				board[i] = undefined;
 				bestScore = Math.min(score, bestScore);
 			}
