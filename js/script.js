@@ -122,13 +122,17 @@ function selectSquare(event) {
 		}
 }
 
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function computerPlayerTurn() {
 	if (computerPlayer == "random") {
 		var computerMove = randomMove();
 	}
 	else if (computerPlayer == "genius") {
 		var computerMove = bestMove();
-		algorithmOutput.textContent = `Number of minimax function calls: ${countMinimaxCalls}, with best move: ${computerMove}`;
+		algorithmOutput.textContent = `Number of minimax function calls: ${numberWithCommas(countMinimaxCalls)}`;
 	}
 	
 	board[computerMove] = -1;
