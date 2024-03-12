@@ -27,12 +27,13 @@ function startSketch() {
 		sketch.draw = function() {
 
 			sketch.background(270);
-			let mapCopy = [mutateArray(depthMapping, 0)];
 			maxColumns = Math.max(6, Math.max(...depthCount.map((x)=> x.length)));
-
 			dimX = sketch.width/(maxColumns*2.5);
 			edge = dimX / 3;
+
 			let firstCornerX = (sketch.width/2)-(dimX/2);
+			let mapCopy = [mutateArray(depthMapping, 0)];
+			let currentDepth = 0;
 
 			initialHeight = 10;
 			heightMultiplier = 2;
@@ -44,9 +45,7 @@ function startSketch() {
 			}
 
 			boardStates = JSON.parse(JSON.stringify(depthCount)) // deep clone the original array.
-			let currentDepth = 0;
 			sketch.drawTree(mapCopy, firstCornerX, currentDepth, rowSpacing, initialHeight+heightMultiplier*dimX);
-
 		};
 		sketch.windowResized = () => {
 			w = p5Container.clientWidth;

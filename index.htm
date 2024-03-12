@@ -17,9 +17,9 @@
 	<h1 class="mt-3">Welcome to Tic Tac Toe</h1>
 
 	<div class="top-container mt-2 mt-lg-4">
-		
-			<form class="playerOptions">
 
+		<div class="quadrant-1">
+			<form class="playerOptions">
 				<div class="formOptions">
 					<h5 class="mt-2">Select Computer Player</h5>
 					<div class="options">
@@ -48,30 +48,32 @@
 					<button class="reset">Reset Game</button>
 					<button class="view-minimax" type="button">View Minimax</button>
 				</div>
-
 			</form> <!-- playerOptions -->
-			
-			
-			
-			<div class="board">
-				<button><p class='position0'></p></button>
-				<button><p class='position1'></p></button>
-				<button><p class='position2'></p></button>
-				<button><p class='position3'></p></button>
-				<button><p class='position4'></p></button>
-				<button><p class='position5'></p></button>
-				<button><p class='position6'></p></button>
-				<button><p class='position7'></p></button>
-				<button><p class='position8'></p></button>
-			</div> <!-- board -->
 
-			<h1 class="game-winner under-board mt-3">display winner</h1>
-			
+			<div class="algo-option-container-1 mt-3">
+				<p class="algo-text-1">Number of minimax function calls: ##</p>
+			</div> <!-- algo-option-container-1 -->
+
+		</div> <!-- quadrant-1 -->
 		
-			<div class="algo-option-container mt-3">
-				<p class="algo-text">Number of minimax function calls: ##</p>
-			</div>
+		<div class="board">
+			<button><p class='position0'></p></button>
+			<button><p class='position1'></p></button>
+			<button><p class='position2'></p></button>
+			<button><p class='position3'></p></button>
+			<button><p class='position4'></p></button>
+			<button><p class='position5'></p></button>
+			<button><p class='position6'></p></button>
+			<button><p class='position7'></p></button>
+			<button><p class='position8'></p></button>
+		</div> <!-- board -->
 
+		<h1 class="game-winner under-board mt-3">display winner</h1>
+		
+	
+		<div class="algo-option-container-2 mt-3">
+			<p class="algo-text-2">Number of minimax function calls: ##</p>
+		</div> <!-- algo-option-container-2 -->
 			
 			
 	</div> <!-- top-container -->

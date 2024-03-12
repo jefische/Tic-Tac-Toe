@@ -18,7 +18,8 @@ const revealWinner = document.querySelector(".game-winner");
 const radioButtonsComputerAI = document.querySelectorAll('input[name="player_type"]');
 const radioButtonsWhoGoesFirst = document.querySelectorAll('input[name="go_first"]');
 const allRadioButtons = document.querySelectorAll("input");
-const algorithmOutput = document.querySelector(".algo-text");
+const algorithmOutput1 = document.querySelector(".algo-text-1");
+const algorithmOutput2 = document.querySelector(".algo-text-2");
 
 
 
@@ -43,10 +44,12 @@ function setComputerPlayer() {
 		computerPlayer = this.value;
 	}
 	if (this.value == "genius") {
-		algorithmOutput.style.opacity = 1;
+		algorithmOutput1.style.opacity = 1;
+		algorithmOutput2.style.opacity = 1;
 	}
 	else {
-		algorithmOutput.style.opacity = 0;
+		algorithmOutput1.style.opacity = 0;
+		algorithmOutput2.style.opacity = 0;
 	}
 }
 
@@ -132,7 +135,8 @@ function computerPlayerTurn() {
 	}
 	else if (computerPlayer == "genius") {
 		var computerMove = bestMove();
-		algorithmOutput.textContent = `Number of minimax function calls: ${numberWithCommas(countMinimaxCalls)}`;
+		algorithmOutput1.textContent = `Number of minimax function calls: ${numberWithCommas(countMinimaxCalls)}`;
+		algorithmOutput2.textContent = `Number of minimax function calls: ${numberWithCommas(countMinimaxCalls)}`;
 	}
 	
 	board[computerMove] = -1;
