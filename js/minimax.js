@@ -24,7 +24,7 @@ function bestMove () {
 function minimax(board, depth, isMaximizing, currentMove) {
 
 	if (availableMoves <= 4) {
-		console.log("We are at depth: " + depth);
+		viewMinimax.disabled = false;
 		depthMapping.push(depth);
 		let tempBoard = board.slice();
 		if (isMaximizing) {
