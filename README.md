@@ -8,4 +8,4 @@ If playing against the intelligent computer player, there is an added **educatio
 
 When generated, the decision tree is drawn using the [p5.js](https://github.com/processing/p5.js) library.  The code for sketching the decision tree is in the [sketch.js](js/sketch.js) file.
 
-To learn more about how this added feature is implemented checkout the [Drawing the Decision](https://github.com/jefische/Tic-Tac-Toe/wiki/Drawing-the-Decision-Tree) Tree wiki page!
+To learn more about how this added feature is implemented checkout the [Drawing the Decision Tree](https://github.com/jefische/Tic-Tac-Toe/wiki/Drawing-the-Decision-Tree) wiki page!
