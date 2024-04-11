@@ -6,6 +6,7 @@ var computerPlayer = "random";
 var countMinimaxCalls = 0;
 let depthCount = [[],[],[],[],[]];
 let depthMapping = [];
+let computerMove = -1;
 
 var ai = "O";
 var human = "X";
@@ -131,10 +132,10 @@ function numberWithCommas(x) {
 
 function computerPlayerTurn() {
 	if (computerPlayer == "random") {
-		var computerMove = randomMove();
+		computerMove = randomMove();
 	}
 	else if (computerPlayer == "genius") {
-		var computerMove = bestMove();
+		computerMove = bestMove();
 		algorithmOutput1.textContent = `Number of minimax function calls: ${numberWithCommas(countMinimaxCalls)}`;
 		algorithmOutput2.textContent = `Number of minimax function calls: ${numberWithCommas(countMinimaxCalls)}`;
 	}
