@@ -16,6 +16,9 @@ function bestMove () {
 				bestScore = score;
 				move = i;
 			}
+			if (availableMoves <= 4) {
+				// console.log("move: " + i + " with score: " + score);
+			}
 		}
 	}
 	return Number(move);

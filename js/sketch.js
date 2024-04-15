@@ -10,7 +10,7 @@ function startSketch() {
 
 	const s = function(sketch) {
 		let w = p5Container.clientWidth;
-		let h = 1000;
+		let h = sketch.displayHeight;
 		let edge;
 		let dimX;
 		let initialHeight;
@@ -25,18 +25,8 @@ function startSketch() {
 		
 		sketch.draw = function() {
 
-			sketch.background(270);
-			maxColumns = Math.max(6, Math.max(...depthCount.map((x)=> x.length)));
-			if (maxColumns > 18) {
-				maxColumns = 18;
-			}
+			// sketch.background(270);
 			dimX = sketch.width/(maxColumns*2.5);
-			edge = dimX / 3;
-
-			let firstCornerX = (sketch.width/2)-(dimX/2);
-			let dimensionMapCopy = [mutateArray(depthMapping, 0)];
-			let currentDepth = 0;
-
 			initialHeight = 10;
 			heightMultiplier = 2;
 			rowSpacing = 5;
@@ -47,7 +37,13 @@ function startSketch() {
 				heightMultiplier = 4;
 				rowSpacing = 11;
 				sketch.textSize(w/100);
+				dimX = sketch.width/(18*2.5);
 			}
+
+			edge = dimX / 3;
+			let firstCornerX = (sketch.width/2)-(dimX/2);
+			let dimensionMapCopy = [mutateArray(depthMapping, 0)];
+			let currentDepth = 0;
 			
 			boardStates = JSON.parse(JSON.stringify(depthCount)) // deep clone the original array.
 			sketch.drawTree(dimensionMapCopy, firstCornerX, currentDepth, rowSpacing, initialHeight+heightMultiplier*dimX);

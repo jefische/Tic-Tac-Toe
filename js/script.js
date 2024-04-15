@@ -70,6 +70,7 @@ function startGame() {
 	if (currentPlayer == ai) {
 		computerPlayerTurn();
 	}
+	gameStart.disabled = true;
 	playerX.forEach(markSquare);
 }
 
@@ -148,7 +149,7 @@ function computerPlayerTurn() {
 	computerSquare.innerHTML = "O";
 
 	availableMoves--;
-	console.log("Number of moves left: " + availableMoves);
+	// console.log("Number of moves left: " + availableMoves);
 
 	var isWinner = null;
 	isWinner = checkForWinner();
@@ -234,14 +235,26 @@ function resetGame() {
 	board = [...Array(9)];
 	gameOver = false;
 	revealWinner.style.opacity = 0;
-	algorithmOutput.style.opacity = 0;
+	algorithmOutput1.style.opacity = 0;
+	algorithmOutput1.textContent = "Number of minimax function calls: ##";
+	algorithmOutput2.style.opacity = 0;
+	algorithmOutput2.textContent = "Number of minimax function calls: ##";
+	viewMinimax.disabled = true;
+	gameStart.disabled = false;
 
 	for (let radioButtons of allRadioButtons) {
 		radioButtons.disabled = false;
+		if (radioButtons.id == 'genius') {
+			algorithmOutput1.style.opacity = 1;
+			algorithmOutput2.style.opacity = 1;
+		}
 	}
 
 	playerX.forEach(resetSquares);
 	playerX.forEach(unmarkSquare);
+
+	p5Container.innerHTML = "";
+	
 
 }
 
