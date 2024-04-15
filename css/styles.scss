@@ -47,7 +47,7 @@ html, body {
 
 h1 {
 	text-align: center;
-	box-shadow: 0 0 10px #ffee10;
+	text-shadow: 0 0 10px #ffee10;
 }
 
 .top-container {
@@ -60,7 +60,7 @@ h1 {
 }
 
 form.playerOptions {
-	border: 5px solid seagreen;
+	border: 2px solid lightcyan;
 	box-shadow: 0 0 10px #ffee10;
 	display: flex;
 	flex-flow: row wrap;
@@ -147,6 +147,7 @@ form {
 }
 .algo-option-container-1, .algo-option-container-2 {
 	margin: auto;
+	text-shadow: 0 0 10px #ffee10;
 }
 
 .algo-text-1, .algo-text-2 {
