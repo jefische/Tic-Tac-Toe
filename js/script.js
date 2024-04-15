@@ -109,16 +109,19 @@ function selectSquare(event) {
 			revealWinner.textContent = `${human} wins!`;
 			revealWinner.style.opacity = 1;
 			gameOver = true;
+			viewMinimax.disabled = true;
 		}
 		else if (isWinner == -100) {
 			revealWinner.textContent = `${ai} wins!`;
 			revealWinner.style.opacity = 1;
 			gameOver = true;
+			viewMinimax.disabled = true;
 		}
 		else if (isWinner == 0) {
 			revealWinner.textContent = "Draw"
 			revealWinner.style.opacity = 1;
 			gameOver = true;
+			viewMinimax.disabled = true;
 		}
 	
 		// Computer Move

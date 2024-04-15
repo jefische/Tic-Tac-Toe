@@ -5,7 +5,6 @@ const viewMinimax = document.querySelector(".view-minimax");
 
 viewMinimax.addEventListener("click", startSketch);
 
-
 function startSketch() {
 
 	const s = function(sketch) {
@@ -19,13 +18,13 @@ function startSketch() {
 		let maxColumns = 6;
 		
 		sketch.setup = function() {
+			sketch.clear();
 			sketch.createCanvas(w, h);
 			sketch.noLoop();
 		};
 		
 		sketch.draw = function() {
 
-			// sketch.background(270);
 			dimX = sketch.width/(maxColumns*2.5);
 			initialHeight = 10;
 			heightMultiplier = 2;
@@ -73,7 +72,7 @@ function startSketch() {
 				}
 
 				// draw board
-				sketch.stroke('black');
+				sketch.stroke('white');
 				sketch.strokeWeight(2);
 				sketch.line(x+edge, y, x+edge, y+dimX); // vertical line 1
 				sketch.line(x+2*edge, y, x+2*edge, y+dimX); // vertical line 2
@@ -82,7 +81,7 @@ function startSketch() {
 
 				// draw branches
 				if (i > 0) {
-					sketch.strokeWeight(3);
+					depthCount[1].length == 3 ? sketch.strokeWeight(3) : sketch.strokeWeight(1);
 					if (depth == 2 && depthCount[1].length == 4) {
 						sketch.line(x-(spacing-3)*dimX+10, y+(dimX/2), x-10, y+(dimX/2));
 					}
@@ -91,8 +90,9 @@ function startSketch() {
 					}
 				}
 				if (depth == 0 | mapArray[i].length >= 1) {
-					sketch.strokeWeight(3);
+					depthCount[1].length == 3 ? sketch.strokeWeight(3) : sketch.strokeWeight(1);
 					sketch.line(x+(dimX/2), y+dimX+10, x+(dimX/2), y+height-40);
+					sketch.fill("#0000");
 					sketch.triangle(x+(dimX/2), y+height-20, x+(dimX/2)-10, y+height-40, x+(dimX/2)+10, y+height-40);
 				}
 
@@ -102,25 +102,26 @@ function startSketch() {
 				for (let i = 0; i < position.length; i++) {
 					for (let j = 0; j < position.length; j++) {
 						if (position[i][j] == 1) { // drawing X
-						sketch.stroke('black');
+						sketch.stroke('white');
 						sketch.strokeWeight(2);
 						sketch.line(x+j*edge,y+i*edge,x+(j+1)*edge,y+(i+1)*edge); // X line-1
 						sketch.line(x+j*edge,y+(i+1)*edge,x+(j+1)*edge,y+i*edge); // X line-2
 						}
 						else if (position[i][j] == -1) { // drawing O
-						sketch.stroke('black');
+						sketch.stroke('white');
+						sketch.fill("#0000");
 						sketch.strokeWeight(2);
 						sketch.circle(x+(j+0.5)*edge, y+(i+0.5)*edge, 0.8*edge);
 						}
-						else if (position[i][j] == 99) { // drawing blue X
-						sketch.stroke('blue');
-						sketch.strokeWeight(3);
+						else if (position[i][j] == 99) { // drawing yellow X
+						sketch.stroke('yellow');
+						sketch.strokeWeight(2);
 						sketch.line(x+j*edge,y+i*edge,x+(j+1)*edge,y+(i+1)*edge); // X line-1
 						sketch.line(x+j*edge,y+(i+1)*edge,x+(j+1)*edge,y+i*edge); // X line-2
 						}
-						else if (position[i][j] == -99) { // drawing blue O
-						sketch.stroke('blue');
-						sketch.strokeWeight(3);
+						else if (position[i][j] == -99) { // drawing yellow O
+						sketch.stroke('yellow');
+						sketch.strokeWeight(2);
 						sketch.circle(x+(j+0.5)*edge, y+(i+0.5)*edge, 0.8*edge);
 						}
 					}
@@ -130,7 +131,8 @@ function startSketch() {
 				if (depth == 1) {
 					let bestBoard = boardStates[depth][0].findIndex((ele) => ele == -99);
 					if (bestBoard == computerMove) {
-						sketch.fill(52,174,235);
+						// sketch.fill(52,174,235);
+						sketch.fill("yellow");
 						sketch.strokeWeight(0.25);
 						sketch.text("Best Move!", x, y-15);
 					}
@@ -170,6 +172,7 @@ function startSketch() {
 			sketch.resizeCanvas(w, h);
 		};
 	};
+	p5Container.innerHTML = '';
 	let myp5 = new p5(s, p5Container);
 }
 
