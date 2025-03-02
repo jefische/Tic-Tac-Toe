@@ -5,6 +5,14 @@ const viewMinimax = document.querySelector(".view-minimax");
 
 viewMinimax.addEventListener("click", startSketch);
 
+class Board {
+	constructor() {
+		this._x = xnum;
+		this._o = onum;
+	}
+	
+}
+
 function startSketch() {
 
 	const s = function(sketch) {
@@ -41,11 +49,10 @@ function startSketch() {
 
 			edge = dimX / 3;
 			let firstCornerX = (sketch.width/2)-(dimX/2);
-			let dimensionMapCopy = [mutateArray(depthMapping, 0)];
-			let currentDepth = 0;
+			let mapNested = [mutateArray(depthMapping, 0)];
 			
 			boardStates = JSON.parse(JSON.stringify(depthCount)) // deep clone the original array.
-			sketch.drawTree(dimensionMapCopy, firstCornerX, currentDepth, rowSpacing, initialHeight+heightMultiplier*dimX);
+			sketch.drawTree(mapNested, firstCornerX, depth=0, rowSpacing, initialHeight+heightMultiplier*dimX);
 		};
 		sketch.drawTree = function(mapArray, corner, depth, spacing, height) {
 			let subRowLength;
